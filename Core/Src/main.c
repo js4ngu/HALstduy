@@ -87,7 +87,12 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_StatusTypeDef RcvStat;
+  uint8_t bufftx[10] = "Hello!\n";
+  uint8_t b_in[10]  = "b_in\n";
+  uint8_t UsartData[10];
+  uint8_t pin_state;
+  HAL_UART_Transmit(&huart2, bufftx, 10, 100) ;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -95,11 +100,18 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET); // 끄고
-	  HAL_Delay(100); // 100ms 딜레이
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); // 키고
-	  HAL_Delay(100); // 100ms 딜레이
+    RcvStat = HAL_UART_Receive(&huart2, UsartData, 1, 100);
+    if (RcvStat == HAL_OK) {
+      if (UsartData[0] == 'a') {
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+      }
+      else if(UsartData[0] == 'b'){
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+      }
+      HAL_UART_Transmit(&huart2, UsartData, 1, 100) ;
+    }
   }
   /* USER CODE END 3 */
 }

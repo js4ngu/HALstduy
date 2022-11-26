@@ -1,5 +1,6 @@
 #MicroXplorer Configuration settings - do not modify
 File.Version=6
+GPIO.groupedBy=Group By Peripherals
 KeepUserPlacement=false
 Mcu.CPN=STM32F103RBT6
 Mcu.Family=STM32F1
@@ -39,6 +40,7 @@ NVIC.PendSV_IRQn=true\:0\:0\:false\:false\:true\:true\:false\:false
 NVIC.PriorityGroup=NVIC_PRIORITYGROUP_4
 NVIC.SVCall_IRQn=true\:0\:0\:false\:false\:true\:true\:false\:false
 NVIC.SysTick_IRQn=true\:0\:0\:false\:false\:true\:true\:true\:false
+NVIC.USART2_IRQn=true\:0\:0\:false\:false\:true\:true\:true\:true
 NVIC.UsageFault_IRQn=true\:0\:0\:false\:false\:true\:true\:false\:false
 PA13.Locked=true
 PA13.Mode=Serial_Wire
@@ -134,7 +136,8 @@ RCC.USBFreq_Value=64000000
 RCC.VCOOutput2Freq_Value=4000000
 SH.GPXTI13.0=GPIO_EXTI13
 SH.GPXTI13.ConfNb=1
-USART2.IPParameters=VirtualMode
+USART2.BaudRate=9600
+USART2.IPParameters=VirtualMode,BaudRate
 USART2.VirtualMode=VM_ASYNC
 VP_SYS_VS_Systick.Mode=SysTick
 VP_SYS_VS_Systick.Signal=SYS_VS_Systick
