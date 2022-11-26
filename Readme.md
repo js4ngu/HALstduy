@@ -9,6 +9,7 @@
   ```
 - UART
   ```cpp
+  HAL_StatusTypeDef RcvStat;
   RcvStat = HAL_UART_Receive(&huart2, UsartData, 1, 100);
   if (RcvStat == HAL_OK) {
     if (UsartData[0] == 'a') {
