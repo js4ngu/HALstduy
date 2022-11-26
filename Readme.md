@@ -20,3 +20,9 @@
     HAL_UART_Transmit(&huart2, UsartData, 1, 100) ;
   }
   ```
+- ADC
+- DAC
+- I2C
+- SPI
+- CAN
+- DMA
